@@ -1,0 +1,158 @@
+<%- include ('./partials/header') %>
+
+    <body class="loading" data-layout-mode="detached" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": true}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
+
+   
+        <div id="wrapper">
+            <%- include ('./partials/topnav') %>
+
+            <div class="left-side-menu">
+
+                <div class="h-100" data-simplebar>
+                    
+                     <%- include ('./partials/siderbar') %>
+                    
+
+                    <div class="clearfix"></div>
+
+                </div>
+                
+
+            </div>
+            
+            <style>
+             
+                .page-title, .font-16{
+                    font-family: Geogia; 
+                }
+                .text-truncate{
+                    font-family: geogia;
+                    font-weight: bolder;
+                    font-size: 1rem;
+                }
+                
+            </style>
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Allday Wipes</a></li>
+                                            <li class="breadcrumb-item active"><%= context %></li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title"><%= context %></h4>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- end page title --> 
+
+                        <!-- render messages for users -->
+                        <%- include ('./partials/message') %>
+            
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <form action="/vendor/add" method="post">
+
+                                                            <div class="row">
+                                                                <div class="col-md-6 mb-3">
+                                                                    <label for="inputEmail4" class="form-label">Vendor name</label>
+                                                                    <input type="text" class="form-control" id="inputEmail4" placeholder="Enter vendor name" name="vendor_name">
+                                                                </div>
+                                                                <div class="col-md-6 mb-3">
+                                                                    <label for="inputPassword4" class="form-label">Phone no</label>
+                                                                    <input type="tel" class="form-control" id="inputPassword4" placeholder="Enter pnone number" name="phone">
+                                                                </div>
+                                                            </div>
+                                                            
+                                                           
+                
+                                                            <div class="mb-3">
+                                                                <label for="inputEmail4" class="form-label">Email</label>
+                                                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Enter email address" name="email">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="inputAddress" class="form-label">Address</label>
+                                                                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address"> 
+                                                            </div>
+                
+                                                            <div class="row">
+                                                                <div class="mb-3 col-md-4">
+                                                                    <label for="inputCity" class="form-label">City</label>
+                                                                    <input type="text" class="form-control" id="inputCity" name="city">
+                                                                </div>
+                                                                <div class="mb-3 col-md-4">
+                                                                    <label for="inputCity" class="form-label">State</label>
+                                                                    <input type="text" class="form-control" id="inputCity" name="state">
+                                                                </div>
+                                                                <div class="mb-3 col-md-4">
+                                                                    <label for="inputState" class="form-label">Status</label>
+                                                                    <select id="inputState" class="form-select" name="status">
+                                                                        <option value="3">Choose</option>
+                                                                        <option value="1">Active</option>
+                                                                        <option value="2"> Blocked</option>
+                                                                        
+                                                                    </select>
+                                                                </div>
+                                                            
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary waves-effect waves-light form-control">Submit</button>
+                
+                                                        </form>
+                
+                                                    </div> <!-- end card-body -->
+                                                </div> <!-- end card-->
+                                            </div> <!-- end col -->
+                                        </div>
+            
+                                        
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div> <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                        
+                    </div> <!-- container -->
+            
+                </div> <!-- content -->
+            
+                   <!-- Footer Start -->
+                <%- include ('./partials/footer') %>
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+        
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- Vendor js -->
+        <script src="/static/assets/js/vendor.min.js"></script>
+
+        <!-- App js -->
+        <script src="/static/assets/js/app.min.js"></script>
+        
+    </body>
+</html>

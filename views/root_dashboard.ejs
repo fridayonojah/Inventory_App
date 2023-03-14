@@ -1,0 +1,194 @@
+<%- include ('./partials/header') %>
+
+    <body class="loading" data-layout-mode="detached" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": true}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
+
+   
+        <div id="wrapper">
+            <%- include ('./partials/topnav') %>
+
+            <div class="left-side-menu">
+
+                <div class="h-100" data-simplebar>
+                    
+                     <%- include ('./partials/siderbar') %>
+                    
+
+                    <div class="clearfix"></div>
+
+                </div>
+                
+
+            </div>
+            
+            <style>
+             
+                .page-title, .font-16{
+                    font-family: Geogia; 
+                }
+                .text-truncate{
+                    font-family: geogia;
+                    font-weight: bolder;
+                    font-size: 1rem;
+                }
+                
+            </style>
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Allday Wipes</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);"><%= context %></li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title"><%= context %></h4>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- end page title --> 
+
+                        <div class="row">
+
+                            <div class="col-md-6 col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="avatar-sm bg-success rounded">
+                                                    <i class="dripicons-wallet avatar-title font-22 text-white"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="text-end">
+                                                    <% totalProduct.forEach(function(product){ %>
+                                                    <h3 class="text-dark my-1"><span data-plugin="counterup"><%= product.id_count %></span></h3>
+                                                    <% }) %>
+                                                    <p class="text-muted mb-1 text-truncate">Products</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 text-end">
+                                            <a href="/product/all" class="btn btn-success"> View all</a>
+                                        </div>
+                                    </div>
+                                </div> <!-- end card-->
+                            </div> <!-- end col -->
+
+                            <div class="col-md-6 col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="avatar-sm bg-primary rounded">
+                                                    <i class="dripicons-basket avatar-title font-22 text-white"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="text-end">
+                                                    <% totalReport.forEach(function(report){ %>
+                                                        <h3 class="text-dark my-1"><span data-plugin="counterup"><%= report.id_count %></span></h3>
+                                                    <% }) %>
+                                                    <p class="text-muted mb-1 text-truncate">Sales Report</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <div class="mt-3 text-end">
+                                                <a href="/sales/reports" class="btn btn-primary"> View all</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- end card-->
+                            </div> <!-- end col -->
+            
+                            <div class="col-md-6 col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="avatar-sm bg-info rounded">
+                                                    <i class="dripicons-store avatar-title font-22 text-white"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="text-end">
+                                                    <% totalVendor.forEach(function(vendor){ %>
+                                                        <h3 class="text-dark my-1"><span data-plugin="counterup"><%= vendor.id_count %></span></h3>
+                                                    <% }) %>
+                                                    <p class="text-muted mb-1 text-truncate">Vendors</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 text-end">
+                                            <a href="/vendor/all" class="btn btn-info"> View all</a>
+                                        </div>
+                                    </div>
+                                </div> <!-- end card-->
+                            </div> <!-- end col -->
+
+                            <div class="col-md-6 col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="avatar-sm bg-warning rounded">
+                                                    <i class="fe-users avatar-title font-22 text-white"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="text-end">
+                                                    <% totalUsers.forEach(function(user){ %>
+                                                        <h3 class="text-dark my-1"><span data-plugin="counterup"><%= user.id_count %></span></h3>
+                                                    <% }) %>
+                                                    <p class="text-muted mb-1 text-truncate">Users</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 text-end">
+                                            <a href="/user/all" class="btn btn-warning"> View all</a>
+                                        </div>
+                                    </div>
+                                </div> <!-- end card-->
+                            </div> <!-- end col -->
+
+                            
+                        </div>
+
+
+                        <!-- end row -->
+
+                        
+                <!-- end Footer -->
+
+                <!-- Footer Start -->
+                <%- include ('./partials/footer') %>
+                <!-- end Footer -->
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+        
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- Vendor js -->
+        <script src="/static/assets/js/vendor.min.js"></script>
+
+        <!-- App js -->
+        <script src="/static/assets/js/app.min.js"></script>
+        
+    </body>
+</html>

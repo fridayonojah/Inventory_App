@@ -1,0 +1,172 @@
+<%- include ('./partials/header') %>
+
+    <body class="loading" data-layout-mode="detached" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": true}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
+
+   
+        <div id="wrapper">
+            <%- include ('./partials/topnav') %>
+
+            <div class="left-side-menu">
+
+                <div class="h-100" data-simplebar>
+                    
+                     <%- include ('./partials/siderbar') %>
+                    
+
+                    <div class="clearfix"></div>
+
+                </div>
+                
+
+            </div>
+            
+            <style>
+             
+                .page-title, .font-16{
+                    font-family: Geogia; 
+                }
+                .text-truncate{
+                    font-family: geogia;
+                    font-weight: bolder;
+                    font-size: 1rem;
+                }
+                
+            </style>
+              <!-- render messages for users -->
+             
+            <div class="content-page">
+                <div class="content">
+                    <div class="container-fluid">
+                        
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 col-lg-8 col-xl-8">
+                                <div class="card bg-pattern">
+
+                                    <div class="card-body p-4">
+                                        
+                                        <div class="text-center w-75 m-auto">
+                                            <div class="auth-logo">
+                                                <a href="/root" class="logo logo-dark text-center">
+                                                    <span class="logo-lg">
+                                                        <img src="/static/assets/images/logo.png" alt="" height="120">
+                                                    </span>
+                                                </a>
+                            
+                                                <a href="/root" class="logo logo-light text-center">
+                                                    <span class="logo-lg">
+                                                        <img src="/static/assets/images/logo.png" alt="" height="120">
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <p class="text-muted mb-4 mt-3">Don't have an account? Create your account, it takes less than a minute</p>
+                                        </div>
+                                        <%- include ('./partials/message') %>
+                                        <form action="/action/create" method="post" enctype="multipart/form-data">
+
+                                            <div class="mb-3">
+                                                <label for="fullname" class="form-label">Full Name</label>
+                                                <input class="form-control" type="text" name="fullname" id="fullname" placeholder="Enter your name" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="username" class="form-label">User Name</label>
+                                                <input class="form-control" type="text" name="username" id="username"placeholder="Enter your user name" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class='row'>
+                                                    <div class='col-md-6'>
+                                                        <label for="role" class="form-label">Phone no</label>
+                                                        <input type="tel" name="phone" placeholder="Enter phone number" class="form-control">
+                                                    </div>
+
+                                                    <div class='col-md-6'>
+                                                        <label for="email" class="form-label">Email address</label>
+                                                        <input class="form-control" type="email" name="email" id="emailaddress"placeholder="Enter your email" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="password" class="form-label">Password</label>
+                                                <div class="input-group input-group-merge">
+                                                    <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required>
+                                                    <div class="input-group-text" data-password="false">
+                                                        <span class="password-eye"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class='row'>
+                                                    <div class='col-md-4'>
+                                                    <label for="role" class="form-label">Status</label>
+                                                        <select class="form-select" name="status" aria-label="Default select example" required>
+                                                                <option selected>select Status</option>
+                                                                <option value="1">Active</option>
+                                                                <option value="2">Blocked</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class='col-md-4'>
+                                                        <label for="role" class="form-label">Role</label>
+                                                            <select class="form-select" name="role" aria-label="Default select example" required>
+                                                                    <option selected>select Role</option>
+                                                                    <option value="1">Root Admin</option>
+                                                                    <option value="2">Editor</option>
+                                                            </select>
+                                                        </div>
+                                                
+                                                    <div class='col-md-4'>
+                                                        <label for="image" class="form-label hight-hidding ">Profile photo</label>
+                                                        <input type="file" name="image" id="image"  class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    
+                                            <div class="text-center d-grid">
+                                                <button class="btn btn-success" type="submit"> Create User </button>
+                                            </div>
+
+                                        </form>
+
+                                    </div> <!-- end card-body -->
+                                </div>
+                                <!-- end card -->
+
+                                <div class="row mt-3">
+                                    <div class="col-12 text-center">
+                                        <p class="text-primary">Go back to  <a href="/root" class="text-success ms-1"><b>Dashboard</b></a></p>
+                                    </div> <!-- end col -->
+                                </div>
+                                <!-- end row -->
+
+                            </div> <!-- end col -->
+                        </div>
+                    <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+   <!-- Footer Start -->
+   <%- include ('./partials/footer') %>
+   <!-- end Footer -->
+
+</div>
+
+<!-- ============================================================== -->
+<!-- End Page content -->
+<!-- ============================================================== -->
+
+
+</div>
+<!-- END wrapper -->
+
+
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
+
+<!-- Vendor js -->
+<script src="/static/assets/js/vendor.min.js"></script>
+
+<!-- App js -->
+<script src="/static/assets/js/app.min.js"></script>
+
+</body>
+</html>

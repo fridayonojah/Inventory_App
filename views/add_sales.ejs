@@ -1,0 +1,419 @@
+<%- include ('./partials/header') %>
+
+  <!-- body start -->
+  <body
+    class="loading"
+    data-layout-mode="detached"
+    data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": true}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'
+  >
+    <!-- Begin page -->
+    <div id="wrapper">
+      <%- include ('./partials/topnav') %>
+
+      <div class="left-side-menu">
+        <div class="h-100" data-simplebar>
+          <%- include ('./partials/siderbar') %>
+
+          <div class="clearfix"></div>
+        </div>
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- Start Page Content here -->
+      <!-- ============================================================== -->
+
+      <div class="content-page">
+        <div class="content">
+          <!-- Start Content-->
+          <div class="container-fluid">
+            <!-- start page title -->
+            <div class="row">
+              <div class="col-12">
+                <div class="page-title-box">
+                  <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                      <li class="breadcrumb-item">
+                        <a href="javascript: void(0);">Allday Wipes</a>
+                      </li>
+                      <li class="breadcrumb-item active"><%= context %></li>
+                    </ol>
+                  </div>
+                  <h4 class="page-title"><%= context %></h4>
+                </div>
+              </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="row">
+              <!-- <div class="col-xl-6"> -->
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="header-title mb-3"><%= context %></h4>
+
+                    <%- include ('./partials/message') %>
+
+                    <form action="/sales/add" method="POST">
+                      <div id="basicwizard">
+                        <ul
+                          class="nav nav-pills bg-light nav-justified form-wizard-header mb-4"
+                        >
+                          <li class="nav-item">
+                            <a
+                              href="#basictab1"
+                              data-bs-toggle="tab"
+                              data-toggle="tab"
+                              class="nav-link rounded-0 pt-2 pb-2"
+                            >
+
+                              <i class="dripicons-wallet  font-22 text-dark"></i>
+                              <span class="d-none d-sm-inline">Product Details</span>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a
+                              href="#basictab2"
+                              data-bs-toggle="tab"
+                              data-toggle="tab"
+                              class="nav-link rounded-0 pt-2 pb-2"
+                            >
+                            <i class="fe-shopping-cart  font-22 text-dark"></i>
+                              <span class="d-none d-sm-inline">Sales Details</span>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a
+                              href="#basictab3"
+                              data-bs-toggle="tab"
+                              data-toggle="tab"
+                              class="nav-link rounded-0 pt-2 pb-2"
+                            >
+                            <i class="fas fa-money-check font-22 text-dark"></i>
+                              <span class="d-none d-sm-inline">Payment Details</span>
+                            </a>
+                          </li>
+                        </ul>
+
+                        <div class="tab-content b-0 mb-0 pt-0">
+                          <div class="tab-pane" id="basictab1">
+                            <div class="row">
+                              <div class="col-12">
+                                <div class="row mb-3">
+                                  <label
+                                    class="col-md-3 col-form-label"
+                                    for="password"
+                                  >
+                                    Product Name</label
+                                  >
+                                  <div class="col-md-9">
+                                    <select class="form-control"  id="product_name" name="product_name">
+                                      <option value="" selected="selected">Select Product</option>
+                                      <% products.forEach(function(product){ %>
+                                              <option value="<%= product.product_name %>"><%= product.product_name %></option>
+                                      <% }) %>
+                                    </select>
+                                  </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                  <label
+                                    class="col-md-3 col-form-label"
+                                    for="userName"
+                                    >Stock Available</label
+                                  >
+                                  <div class="col-md-9">
+                                    <input type="number" required class="form-control"
+                                      name="stockAvailable" id="stockAvailable" 
+                                      readonly 
+                                      value="">
+                                  </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                  <label
+                                    class="col-md-3 col-form-label"
+                                    for="userName"
+                                    >Unit Price</label
+                                  >
+                                  <div class="col-md-9">
+                                    <input type="text" 
+                                      id="unity_price"
+                                      name="unity_price"
+                                      class="form-control" 
+                                      required 
+                                      readonly
+                                    autocomplete="off" value="">
+                                  </div>
+                                </div>
+
+                              </div>
+                              <!-- end col -->
+                            </div>
+                            <!-- end row -->
+                          </div>
+
+                          <div class="tab-pane" id="basictab2">
+                            <div class="row">
+                              <div class="col-12">
+                                <div class="row mb-3">
+                                  <label
+                                    class="col-md-3 col-form-label"
+                                    for="name"
+                                  >
+                                    Vendor Name</label
+                                  >
+                                  <div class="col-md-9">
+                                    <select class="form-control" id="vendor" name="vendor">
+                                      <option value="defauly">Select Vendor</option>
+                                      <% vendors.forEach(function(vendor){ %>
+                                              <option value="<%= vendor.vendor_name %>"><%= vendor.vendor_name %></option>
+                                      <% }) %>
+                                  </select>
+                                  </div>
+                                </div>
+                                <div class="row mb-3">
+                                  <label
+                                    class="col-md-3 col-form-label"
+                                    for="surname"
+                                  >
+                                    Quanty</label
+                                  >
+                                  <div class="col-md-9">
+                                    <input type="number" 
+                                      required class="form-control"
+                                      name="qty"
+                                      id="qty" 
+                                      placeholder="Enter Quantity"
+                                      min="1"
+                                    >
+                                  </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                  <label
+                                    class="col-md-3 col-form-label"
+                                    for="email"
+                                    >Invoice Number</label
+                                  >
+                                  <div class="col-md-9">
+                                    <input type="text"
+                                      id="invoice_no" name="invoice_no" 
+                                      class="form-control" 
+                                      placeholder="Enter item invoice number" 
+                                      required
+                                    >
+                                  </div>
+                                </div>
+
+                                <!-- <div class="row mb-3">
+                                  <label
+                                    class="col-md-3 col-form-label"
+                                    for="email"
+                                    >Order Date</label
+                                  >
+                                  <div class="col-md-9">
+                                    <input 
+                                      type="date" 
+                                      class="form-control"
+                                      data-provide="datepicker" 
+                                      data-date-format="d-M-yyyy"
+                                      name="order_date"
+                                    >
+                                  </div>
+                                </div> -->
+
+                              </div>
+                              <!-- end col -->
+                            </div>
+                            <!-- end row -->
+                          </div>
+
+                          <div class="tab-pane" id="basictab3">
+                            <div class="row">
+                              <div class="col-12">
+                                <div class="row mb-3">
+                                  <label
+                                    class="col-md-3 col-form-label"
+                                    for="surname"
+                                  >
+                                    Total Amount</label
+                                  >
+                                  <div class="col-md-9">
+                                    <input type="number"
+                                      id="total_amount"
+                                      required 
+                                      value="0" 
+                                      name="total_amount"
+                                      value="" 
+                                      class="form-control" 
+                                      readonly
+                                    >
+                                  </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                  <label
+                                    class="col-md-3 col-form-label"
+                                    for="surname"
+                                  >
+                                    Amount Paid</label
+                                  >
+                                  <div class="col-md-9">
+                                    <input
+                                      type="text"
+                                      required 
+                                      name="amount_paid"
+                                      id="amount_paid"
+                                      class="form-control" 
+                                      placeholder="Enter amount paid"
+                                    >
+                                  </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                  <label
+                                    class="col-md-3 col-form-label"
+                                    for="surname"
+                                  >
+                                    Outstanding Balance</label
+                                  >
+                                  <div class="col-md-9">
+                                    <input 
+                                      type="number"
+                                      id="balance"
+                                      name="balance" 
+                                      value="0"
+                                      class="form-control" 
+                                      readonly
+                                    >
+                                  </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                  <label
+                                    class="col-md-3 col-form-label"
+                                    for="surname"
+                                  >
+                                    Payment Status</label
+                                  >
+                                  <div class="col-md-9">
+                                    <select class="form-control" id="" name="status">
+                                      <option value="defauly">Select payment Status</option>
+                                      <option value="1">Paid</option>
+                                      <option value="2">Cash On Delivery</option>
+                                      
+                                    </select>
+                                  </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                  <label
+                                    class="col-md-3 col-form-label"
+                                    for="surname"
+                                  >
+                                    Comment </label
+                                  >
+                                  <div class="col-md-9">
+                                    <textarea
+                                      class="form-control" 
+                                      required 
+                                      name="comment" 
+                                      id="comment" 
+                                      rows="3" 
+                                      placeholder="Please enter a comment">
+                                    </textarea>
+                                  </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary form-control mb-3">Add sale</button>
+                              </div>
+                              <!-- end col -->
+                            </div>
+                            <!-- end row -->
+                          </div>
+                          
+                          
+
+                          <ul class="list-inline wizard mb-0">
+                            <li class="previous list-inline-item">
+                              <a
+                                href="javascript: void(0);"
+                                class="btn btn-secondary"
+                                >Previous</a
+                              >
+                            </li>
+                            <li class="next list-inline-item float-end">
+                              <a
+                                href="javascript: void(0);"
+                                class="btn btn-secondary"
+                                >Next</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                        <!-- tab-content -->
+                      </div>
+                      <!-- end #basicwizard-->
+                    </form>
+                  </div>
+                  <!-- end card-body -->
+                </div>
+                <!-- end card-->
+              <!-- </div> -->
+              <!-- end col -->
+            <!-- end row -->
+          </div>
+          <!-- container -->
+        </div>
+        <!-- content -->
+
+        <!-- Footer Start -->
+        <footer class="footer">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>
+                &copy; UBold theme by <a href="">Coderthemes</a>
+              </div>
+              <div class="col-md-6">
+                <div class="text-md-end footer-links d-none d-sm-block">
+                  <a href="javascript:void(0);">About Us</a>
+                  <a href="javascript:void(0);">Help</a>
+                  <a href="javascript:void(0);">Contact Us</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- end Footer -->
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- End Page content -->
+      <!-- ============================================================== -->
+    </div>
+    <!-- END wrapper -->
+
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
+
+    <!-- Vendor js -->
+    <script src="/static/assets/js/vendor.min.js"></script>
+
+    <!-- Plugins js-->
+    <script src="/static/assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+    <script src="../assets/libs/flatpickr/flatpickr.min.js"></script>
+    <script src="../assets/libs/spectrum-colorpicker2/spectrum.min.js"></script>
+    <script src="../assets/libs/clockpicker/bootstrap-clockpicker.min.js"></script>
+    <script src="../assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+
+    <!-- Init js-->
+    <script src="/static/assets/js/pages/form-wizard.init.js"></script>
+
+    <!-- App js -->
+    <script src="/static/assets/js/app.min.js"></script>
+
+    <script src="/static/assets/js/main/add_reports.js"></script>
+    <script src="/static/assets/js/main/script.js"></script>
+  </body>
+</html>

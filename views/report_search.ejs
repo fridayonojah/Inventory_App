@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Datatables | UBold - Responsive Admin Dashboard Template</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="/static/assets/images/favicon.ico">
+
+        <!-- third party css -->
+        <link href="/static/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+        <link href="/static/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+        <link href="/static/assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+        <link href="/static/assets/libs/datatables.net-select-bs5/css//select.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+        <!-- third party css end -->
+
+		<!-- App css -->
+		<link href="/static/assets/css/config/modern/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+		<link href="/static/assets/css/config/modern/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+
+		<link href="/static/assets/css/config/modern/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
+		<link href="/static/assets/css/config/modern/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
+
+		<!-- icons -->
+		<link href="/static/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <!-- body start -->
+    <body class="loading" data-layout-mode="detached" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": true}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
+
+   
+        <div id="wrapper">
+            <%- include ('./partials/topnav') %>
+
+            <div class="left-side-menu">
+
+                <div class="h-100" data-simplebar>
+                    
+                     <%- include ('./partials/siderbar') %>
+                    
+
+                    <div class="clearfix"></div>
+
+                </div>
+                
+
+            </div>
+            
+            <style>
+             
+                .page-title, .font-16{
+                    font-family: Geogia; 
+                }
+                .text-truncate{
+                    font-family: geogia;
+                    font-weight: bolder;
+                    font-size: 1rem;
+                }
+                
+                #datatable-buttons{
+                    overflow-y: auto;
+                }
+            </style>
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            
+                                            
+                                            <li class="breadcrumb-item active"><%= context %>e</li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title"><%= context %></h4>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- end page title --> 
+
+                    <!-- The users table -->
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                                        <thead>
+                                            <tr>
+                                                <th>Vendor</th>
+                                                <th>Product Name</th>
+                                                <th>Invoice No</th>
+                                                <th>Payment Status</th>
+                                                <th>Qty</th>
+                                                <th>Unity Price</th>
+                                                <th>Amount Paid</th>
+                                                <th>Balance</th>
+                                                <th>Order Date</th>
+                                                <th>Order Status</th>
+                                            </tr>
+                                        </thead>
+                                    
+                                    
+                                        <tbody>
+                                            <% allReport.forEach(function(report){ %>
+                                            <tr>
+                                                <td><%= report.vendor %></td>
+                                                <td><%= report.product_name %></td>
+                                                <td><%= report.invoice_no %></td>
+                                                <td><%= report.qty %></td>
+                                                <td><%= report.unity_price %></td>
+                                                <td><%= report.amount_paid %></td>
+                                                <td><%= report.balance %></td>
+                                                <td><%= report.total_amount %></td>
+                                                <td><%= report.order_date %></td>
+                                            </tr>
+                                            <% }) %>
+                                            
+                                        </tbody>
+                                    </table>
+                                    
+                                </div> <!-- end card body-->
+                            </div> <!-- end card -->
+                        </div><!-- end col-->
+                    </div>
+                    <!-- end row-->
+
+                    <!-- x-end of the users table -->
+                </div> <!-- content -->
+
+                <!-- Footer Start -->
+                <%- include ('./partials/footer') %>
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+        
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- Vendor js -->
+        <script src="/static/assets/js/vendor.min.js"></script>
+
+        <!-- third party js -->
+        <script src="/static/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="/static/assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+        <script src="/static/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="/static/assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+        <script src="/static/assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="/static/assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
+        <script src="/static/assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+        <script src="/static/assets/libs/datatables.net-buttons/js/buttons.flash.min.js"></script>
+        <script src="/static/assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+        <script src="/static/assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+        <script src="/static/assets/libs/datatables.net-select/js/dataTables.select.min.js"></script>
+        <script src="/static/assets/libs/pdfmake/build/pdfmake.min.js"></script>
+        <script src="/static/assets/libs/pdfmake/build/vfs_fonts.js"></script>
+        <!-- third party js ends -->
+
+        <!-- Datatables init -->
+        <script src="/static/assets/js/pages/datatables.init.js"></script>
+
+        <!-- App js -->
+        <script src="/static/assets/js/app.min.js"></script>
+        
+    </body>
+</html>
