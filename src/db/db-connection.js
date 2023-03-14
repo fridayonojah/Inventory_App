@@ -7,10 +7,10 @@ const mysql2 = require('mysql2')
 class DbConnection {
   constructor() {
     this.db = mysql2.createPool({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASS,
-      database: process.env.DB_NAME,
+      host: sql8.freemysqlhosting.net,
+      user: sql8604370,
+      password: chB1NIfmSN,
+      database: sql8604370,
     })
 
     this.checkConnection()
