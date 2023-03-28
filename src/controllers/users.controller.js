@@ -56,31 +56,55 @@ class UserController {
   }
 
   resetPassword = async (req, res, next) => {
-    const userInfo = req.body
+    /***
+     * TODO
+     * 1 get user email to retrive records from the db if exist
+     * 2 generate a ramdom strings as password that user
+     * 3 send a mail to user email add given containing
+     * the user user email and genrated password for loging
+     */
 
-    const user = await userModel.findOne({ username: userInfo.username })
-    console.log(user)
+    const { comfirm_password, ...otherInfo } = req.body
 
-    if (!user) {
-      res.JSON({
-        msg: "This user doesn't exist",
-      })
+    // check if password match
+    if (comfirm_password !== otherInfo.password) {
+      req.flash('error_msg', `Passwords didn't match!`)
+      res.redirect('/user/password_reset')
     } else {
-      // send some messages on success
-      const resetPassword = await userModel.resetPassword(userInfo, user.id)
-      if (resetPassword) {
-        res.JSON({
-          msg: 'Password was change succesfully!',
-          status: 200,
-        })
-      }
+      const user = await userModel.findOne({ username: otherInfo.username })
+      console.log(user)
 
-      // if (resetPassword)
-      //   req.flash('success_msg', 'Password was changed successfully!')
-      // req.flash('/user/login')
+      if (!user) {
+        req.flash(
+          'error_msg',
+          `This user doesn't exist in our record  ${otherInfo.username}`,
+        )
+        res.redirect('/user/password_reset')
+      } else {
+        otherInfo.password = await this.hashPassword(otherInfo.password)
+        const resetPassword = await userModel.resetPassword(
+          otherInfo,
+          otherInfo.username,
+        )
+        if (resetPassword) {
+          req.flash(
+            'success_msg',
+            `Password was updated successfully. Please proceded to login`,
+          )
+          res.redirect('/user/password_reset')
+        }
+      }
     }
   }
 
+  // hash password if it exists
+  hashPassword = async (req) => {
+    if (req.body.password) {
+      req.body.password = await bcrypt.hash(req.body.password, 10)
+    }
+  }
+
+  // Admin dashboard
   dashboard = async (req, res, next) => {
     const datas = {
       totalProduct: await productModel.countTotalProduct(),
@@ -89,15 +113,7 @@ class UserController {
       totalReport: await salesModel.countTotalSales(),
       context: 'Dashboard',
     }
-
     res.render('root_dashboard', datas)
-  }
-
-  // hash password if it exists
-  hashPassword = async (req) => {
-    if (req.body.password) {
-      req.body.password = await bcrypt.hash(req.body.password, 10)
-    }
   }
 }
 

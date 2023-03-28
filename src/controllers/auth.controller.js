@@ -17,9 +17,6 @@ class AuthController {
           if (err) {
             return next(err)
           } else {
-            // console.log(user)
-            // res.redirect('/root')
-
             await location(user.role)
           }
         })
@@ -28,6 +25,13 @@ class AuthController {
       next(error)
     }
   }
+
+  /**
+   * Note 1 ==> Admin 2 ==> Editor
+   * @param {admin dashboard} res
+   * @param {user role} role
+   * @returns redirect to dashboard based on user role
+   */
 
   admin_location = async (res, role) => {
     switch (role) {
@@ -54,11 +58,6 @@ class AuthController {
       res.redirect('/')
     }
   }
-
-  // rootAccess = async(req, res, next) => {
-  //   const loggedInUser = await this.isLoggedIn()
-  //   if(loggedInUser)
-  // }
 
   isLoggedIn = async (req, res, next) => {
     if (req.user) {

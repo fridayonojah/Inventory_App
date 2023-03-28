@@ -30,7 +30,7 @@ class ProductController {
     /**
      * This is to check if a product name aldready exiss in DB
      * params(Product name)
-     * response data ->
+     * response product info
      */
     const productExist = await productModel.findOne({
       product_name: productDatas.product_name,
