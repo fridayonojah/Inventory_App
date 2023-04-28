@@ -33,9 +33,10 @@ class ProductModel {
     stock_in,
     image,
     stock_available,
+    stock_out
   }) => {
     const sql = `INSERT INTO ${this.tableName} 
-    (product_name, uty_price, stock_in, image, stock_available,stock_out) VALUES(?,?,?,?,?,?)`
+    (product_name, uty_price, stock_in, image, stock_available, stock_out) VALUES(?,?,?,?,?,?)`
 
     return await query(sql, [
       product_name,
@@ -43,7 +44,7 @@ class ProductModel {
       stock_in,
       image,
       stock_available,
-      stock_out = 0
+      stock_out
     ])
   }
 
