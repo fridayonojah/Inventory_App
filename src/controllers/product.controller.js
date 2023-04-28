@@ -44,6 +44,7 @@ class ProductController {
       res.redirect('/product/add')
     } else {
       productDatas.stock_available = req.body.stock_in
+      productDatas.stock_out = 0
       productDatas.image = req.file.filename
 
       const createProductInfo = await ProductModel.create(productDatas)
